@@ -1,0 +1,62 @@
+<main role="main" class="container">
+  <div class="row row-offcanvas row-offcanvas-right">
+    <div class="col-12 col-md-9">
+      <h1> {{albumname}}</h1>
+      <div class="row">
+        <div class="col-6 col-lg-4" *ngFor="let pic of picture;">
+          <img  [src]="pic._id != -1 ? rootPath+pic.picturename : pic.picturename"  height="199" width="199">
+          <p><a class="btn btn-secondary" href="#" role="button">{{pic.picturename}}</a></p>
+        </div><!--/span-->
+      </div><!--/row-->
+    </div><!--/span-->
+    <div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
+      <div class="list-group" style="background:white">
+        <!--<app-sidebar></app-sidebar> -->
+         <button (click)="startSlideShow()" type="button"  data-toggle="modal" data-target="#myModal">slide show</button>
+        <select (change)="onSelect($event.target.value)" [(ngModel)]="myInterval">
+          <option  value="1000"> 1 </option>
+          <option  value="2000"> 2 </option>
+           <option  value="5000"> 5 </option>
+          <option  value="10000"> 10 </option>
+          <option  value="15000"> 15 </option>
+          </select>
+      </div>
+    </div><!--/span-->
+  </div><!--/row-->
+</main>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog ">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+          <button type="button" class="btn btn-default close" data-dismiss="modal">close</button> 
+          <h4 class="modal-title">{{albumname}} {{"- Slide Show "}} </h4>
+        </div>
+        <div class="modal-body">
+         
+
+          
+     <!-- craual code start -->
+       <carousel [interval]="myInterval" [noWrap]="noWrapSlides" [(activeSlide)]="activeSlideIndex">
+      <slide *ngFor="let slide of picture; let index=index">
+        <img [src]="rootPath +slide.picturename" alt="image slide" style="display: block; width: 100%;">
+     
+        <div class="carousel-caption">
+          <h4>Slide {{index}}</h4>
+          <p>{{slide.text}}</p>
+        </div>
+      </slide>
+    </carousel>
+
+      <!-- crausal code end  -->
+        </div>
+        <div class="modal-footer">
+           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+

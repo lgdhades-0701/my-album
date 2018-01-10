@@ -1,0 +1,35 @@
+<h2 class="page-header">Login</h2>
+<form (submit)="onLoginSubmit()">
+
+    <div class="form-group">
+        <label for="username">User Name:</label>
+        <input type="text" required [(ngModel)]="username" name="username" class="form-control" minlength="5" maxlength="30" #username1="ngModel">
+
+        <div *ngIf="username1.errors && (username1.dirty || username1.touched)" class="alert alert-danger">
+            <div [hidden]="! username1.errors.required">
+                user name is required !!!
+            </div>
+            <div [hidden]="! username1.errors.minlength">
+                user name must be atleast 5 character !!!
+            </div>
+            <div [hidden]="! username1.errors.maxlength">
+                user name must be less than 30 character !!!
+            </div>
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" [(ngModel)]="password" name="password" class="form-control" required #password1="ngModel">
+        <div *ngIf="password1.errors && (password1.dirty || password1.touched)" class="alert alert-danger">
+            <div [hidden]="! password1.errors.required">
+                Password is required !!!!
+            </div>
+
+        </div>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+    <a [routerLink]="['/fogetpassword']" class="btn btn-default">Forget Password</a>
+
+</form>

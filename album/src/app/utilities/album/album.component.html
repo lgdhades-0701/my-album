@@ -1,0 +1,30 @@
+
+<main role="main" class="container"  >
+     <div   style="float:right;clear:both;" class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
+          <div class="list-group">
+             <app-sidebar></app-sidebar>
+          </div>
+      </div>
+  <h1> Albums </h1>
+      <div style="float:right;clear:both;" class="row row-offcanvas row-offcanvas-right">
+  <div class="row">
+     
+      <div class="col-md-4"  *ngFor="let albumdata of album;let j=index">
+         <div class="photo-widget">
+             
+                <a [routerLink]="['/showAlbum',albumdata._id,albumdata.albumname]">
+
+                <div class="col-md-6"  *ngFor="let pic of albumdata.imagedetails;let i = index">
+                <div class="image" *ngIf="i<4">
+                      <img [src]="pic._id != -1 ? rootPath+pic.picturename : pic.picturename"  alt="" height="100" width="100">
+                </div>
+                </div> <div class="divider" ></div>
+                <h1>{{albumdata.albumname}}</h1>
+                </a>
+      </div>
+      </div>
+  </div>
+      </div>
+     
+</main>
+

@@ -1,0 +1,12 @@
+
+.sidebar{  width: 14%;
+    height: 100%;
+    float:right;
+}
+.row{
+    margin-top: 10px;
+}
+.sidebar{
+margin-top: -137px;
+margin-right: 10px;
+}

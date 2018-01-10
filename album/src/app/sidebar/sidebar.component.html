@@ -1,0 +1,19 @@
+
+  <div class="sidebar-nav">
+      <div class="well">
+        <ul class="nav nav-list">
+          <li *ngIf="urlName == '/dashboard'" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/picture"><i class="icon-home"></i> Picture</a></li>
+        <li *ngIf="urlName == '/dashboard'" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/album"><i class="icon-home"></i> Album</a></li>
+        <li *ngIf="urlName == '/picture'"   [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/picture"><i class="icon-home"></i> Picture</a></li>
+        <li *ngIf="urlName == '/picture'"  [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/addpicture"><i class="icon-home"></i> AddPicture</a></li>
+        <li *ngIf="urlName == '/album'" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/album"><i class="icon-home"></i>Show Album</a></li>
+        <li *ngIf="urlName == '/album'" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/addalbum"><i class="icon-home"></i>Add Album</a></li>
+        <li *ngIf="urlName == '/addpicture'" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/picture"><i class="icon-home"></i> Picture</a></li>
+        <li *ngIf="urlName == '/addalbum'" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/album"><i class="icon-home"></i>Show Album</a></li>
+        <li *ngIf="urlName == '/showAlbum'" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/addalbum"><i class="icon-home"></i>Add Album</a></li>
+        <li *ngIf="urlName == 'showAlbum/id/name'" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/album"><i class="icon-home"></i>Show Album</a></li>
+      
+      </ul>
+    </div>
+  </div>
+

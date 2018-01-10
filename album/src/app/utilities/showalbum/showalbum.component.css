@@ -1,0 +1,16 @@
+/*
+#myModal{
+    margin-left: 10% !important ;
+    margin-right: 10% !important ;
+    margin-top: 10% !important ;
+    margin-bottom: 20% !important ;
+}
+*/
+
+.modal-dialog  {
+    width:1024px !important;
+}
+
+.sidebar{
+    background: white none repeat scroll 0% 0% !important;
+}

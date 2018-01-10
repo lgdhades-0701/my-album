@@ -1,0 +1,36 @@
+<main role="main" class="container">
+    <h2 class="page-header">Add Picture</h2>
+    <p> To upload multiple  picture press (Add More) ...</p>
+      <div class="list-group" class="sidebar">
+          <app-sidebar></app-sidebar>
+      </div>
+      <div class="row row-offcanvas row-offcanvas-right">
+          <div class="col-12 col-md-9">
+              <div class="row">
+                        <div class=" col-md-3">
+                            <input id="cin" name="cin" type="file" (change)="fileChangeEvent($event)" required placeholder="Upload a file..." />
+                          </div>
+                          <div class=" col-md-3">
+                             <!--<button class="btn btn-success btn-add add-more" (click)="onAddProperty()"><span class="glyphicon glyphicon-plus">Add Next Picture</span></button> -->
+                              <button class="btn btn-success btn-add add-more" (click)="onAddProperty()">Add More</button>
+                          </div>
+                  </div>
+          </div>
+        <form [formGroup]="searchForm">
+          <div formArrayName="properties">
+            <div *ngFor="let prop of searchForm.get('properties').controls; let i = index" >
+                <div class="col-12 col-md-9">
+                    <div class="row upload">
+                    <div class=" col-md-3"><input id="cin" name="cin{{i}}" type="file" (change)="fileChangeEvent($event)" required placeholder="Upload a file..." /></div>
+                  <div class=" col-md-3"> <button class="btn btn-remove btn-danger" type="button" (click)="removeItem(i)"><span class="glyphicon glyphicon-minus"></span></button>   </div>
+                </div>
+                </div>
+            </div>
+          </div>
+        </form>
+        <div class="col-12 col-md-9">
+          <button type="button" class="btn btn-primary btn-s" (click)="upload()">  <i class="glyphicon glyphicon-open-file"></i>&nbsp;Upload  </button>
+            <button type="button" class="btn btn-primary btn-s" (click)="cancel()"> &nbsp;cancel  </button>
+        </div>
+      </div>
+    </main>

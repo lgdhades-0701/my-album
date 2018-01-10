@@ -1,0 +1,91 @@
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { FlashMessagesService } from 'angular2-flash-messages';
+import {Router} from '@angular/router';
+
+@Component({
+  selector: 'app-addalbum',
+  templateUrl: './addalbum.component.html',
+  styleUrls: ['./addalbum.component.css']
+})
+export class AddalbumComponent implements OnInit {
+ username:String;
+ userdetails:any;
+ albumname:String;
+ rootPath:String;
+ picture:Array<Object> = [];
+ selectedPicture:Array<Object> = [];
+ albumdata:Array<Object> = [];
+ selected= false;
+
+ constructor(
+    private authservice:AuthService,
+    private flashmessage:FlashMessagesService,
+    private _router:Router) { }
+
+  ngOnInit() {
+    this.username=this.authservice.Userdetails();
+    this.authservice.currentUserDetails(this.username).subscribe(data=>{
+      if(data.success){
+        this.rootPath="http://localhost:3000/picture/";
+        // this.rootPath='http://ec2-52-41-122-168.us-west-2.compute.amazonaws.com:8080/picture/';
+        if(data.msg.picture.length){
+          this.picture = data.msg.picture;
+        }
+        else{
+        this.picture.push({"picturename":"nofound.png","_id":"123"});
+        }
+      }
+      else{
+        console.log(JSON.stringify(data));
+      }
+    });
+  }
+  showSelected(pic){
+  
+   if (!pic.selected) { 
+     pic.selected = true;
+      this.selectedPicture.push(pic);
+   }
+   else{
+         if(pic.selected == true){
+           
+          pic.selected=false;
+          let index = this.selectedPicture.findIndex(d => d._id === pic._id); //find index in your array
+            this.selectedPicture.splice(index, 1);
+        
+          
+         
+        console.log(obj);
+    
+       }
+       else {
+          pic.selected=true;
+         this.selectedPicture.push(pic);
+         
+      }
+       
+   }
+    
+  }
+  addAlbum(){
+    const album = {
+      selectedPicture: this.selectedPicture,
+      albumname: this.albumname,
+      username: this.username
+    }
+    this.authservice.addAlbum(album).subscribe(data=>{
+      if(data.success){
+        this.flashmessage.show(data.msg,{
+        cssClass:'alert-success',
+        timeout:5000 });
+        this._router.navigate(['/album']);
+      }
+      else{
+        this.flashmessage.show(data.msg,{ cssClass:'alert-danger',  timeout:5000 });
+        this._router.navigate(['/album']);
+      }
+    });
+    console.log(JSON.stringify(album));
+}
+}

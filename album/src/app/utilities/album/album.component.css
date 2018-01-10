@@ -1,0 +1,60 @@
+
+.photo-widget{
+  padding: 30px;
+  margin-top: 20px;
+}
+.photo-widget h3{
+  font-size: 12px;
+  font-weight: 500;
+  color: #434c5b;
+  text-transform: uppercase;
+
+}
+
+.photo-widget h3 a{
+float: right;
+line-height: 12px;
+font-size: 13px;
+text-transform: none;
+}
+.photo-widget .image{
+  margin-top: 20px;
+  position: relative;
+  cursor: pointer;
+}
+.photo-widget .image:before{
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+ /* background-color:rgba(255,255,255, 0.1); */
+ /* z-index: 9;*/
+  display: none;
+  transition: all 0.4s ease in;
+}
+.photo-widget .image:hover:before{
+  display: block;
+}
+.photo-widget .explore{
+  margin: 0 auto;
+  text-transform: uppercase;
+  font-size: 11px;
+  margin-top: 10px;
+  text-decoration: none;
+  color: #aaa;
+}
+.photo-widget .explore:hover{
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+
+
+
+.photo-widget:hover, 
+.photo-widget:focus {
+  background-color:white;
+    color:white;
+}

@@ -1,0 +1,17 @@
+.logo{
+    height: 70px;
+margin-top: -24px;
+}
+.navbar {
+    background-color:#acb9bf;
+    color:black !important;
+}
+.navbar-header{
+     /* background-color:#343434;*/
+   /* color:black;*/
+}
+.navbar-inverse .navbar-brand:hover, 
+.navbar-inverse .navbar-brand:focus {
+    background-color: transparent !important;
+   color:green !important;
+}
